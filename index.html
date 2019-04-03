@@ -29,7 +29,7 @@
         <!--[if lt IE 9]>
                 <script src="js/html5.js"></script>
         <![endif]-->
-
+<link rel="stylesheet" href="assets/bootstrap-v3/css/bootstrap.css">
     </head>
     <body>
 
@@ -71,6 +71,40 @@ $(document).ready(function(){
     $('[data-toggle="popover"]').popover();   
 	});
 </script>
+	     <div style="width: 200px; margin-left:10px">
+	 <h4>Jquery Password Plugin</h4>
+    <p>
+      <input
+        id="password"
+        class="form-control"
+        type="password"
+        value="123"
+        placeholder="password">
+    </p>
+    <p><label><input id="methods" type="checkbox"> Show password</label></p>
+    <p id="eventLog">Event log</p>
+    <hr>
+  </div>
+
+  <script src="assets/jquery.min.js"></script>
+  <script src="assets/bootstrap-v3/js/bootstrap.js"></script>
+  <script src="bootstrap-show-password.js"></script>
+  <script>
+    $(function() {
+      $('#password').password()
+      .password('focus')
+      .on('show.bs.password', function(e) {
+        $('#eventLog').text('On show event');
+        $('#methods').prop('checked', true);
+      }).on('hide.bs.password', function(e) {
+        $('#eventLog').text('On hide event');
+        $('#methods').prop('checked', false);
+      });
+      $('#methods').click(function() {
+        $('#password').password('toggle');
+      });
+    });
+  </script>
 
 
 
